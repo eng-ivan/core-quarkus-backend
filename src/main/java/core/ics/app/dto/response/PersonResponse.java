@@ -20,6 +20,7 @@ public class PersonResponse extends QueryResponseBase{
 
     private String personName;
 
+    @JsonFormat(pattern = "000.000.000-00")
     private String cpf;
 
     private String address;
