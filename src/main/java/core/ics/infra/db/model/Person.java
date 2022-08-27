@@ -1,31 +1,36 @@
 package core.ics.infra.db.model;
 
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
-import javax.persistence.Id;
-import javax.persistence.GenerationType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Column;
+
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
-public class Person extends EntityBase{
+@Data
+@Entity
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+@Table(name = "person")
+public class Person {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    Long id;
 
     @Column(name = "person_name")
-    private String personName;
+    String personName;
 
     @Column(name = "cpf")
-    private String cpf;
+    String cpf;
 
     @Column(name = "address")
-    private String address;
+    String address;
 
     @Column(name = "token_key")
-    private String tokenKey;
+    String tokenKey;
 
     @CreationTimestamp
     @Column(name = "registration_date")
-    private LocalDateTime registrationDate;
+    LocalDateTime registrationDate;
 }
