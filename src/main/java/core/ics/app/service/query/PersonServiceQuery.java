@@ -2,6 +2,9 @@ package core.ics.app.service.query;
 
 import core.ics.app.dto.response.PersonResponse;
 import core.ics.cross.assembler.PersonMapper;
+import core.ics.cross.utils.BusinessCode;
+import core.ics.cross.utils.BusinessUtils;
+import core.ics.domain.exception.BusinessException;
 import core.ics.domain.usecase.impl.PersonQueryUseCase;
 import core.ics.infra.db.model.Person;
 import lombok.extern.slf4j.Slf4j;
@@ -24,7 +27,10 @@ public class PersonServiceQuery {
     public PersonResponse getById(Long id){
 
         log.info("[getById] - Fetch id {}", id);
-        Person person = personQueryUseCase.getById(id);
+        Person person = personQueryUseCase.getById(
+                BusinessUtils.createMapId("id", id)
+        ).orElseThrow(()->new BusinessException(BusinessCode.GENERIC));
+
         return mapper.toResponse(person);
     }
 
@@ -38,7 +44,7 @@ public class PersonServiceQuery {
 
         if (responseList.isEmpty()){
             log.warn("[getAll] - Empty list");
-            throw new RuntimeException();
+            throw new BusinessException(BusinessCode.GENERIC);
         }
 
         return responseList;
