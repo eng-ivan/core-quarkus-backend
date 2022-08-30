@@ -9,11 +9,11 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
 @ApplicationScoped
-public class PersonDataProvider implements IGatewayBase<Person, Long> {
+public class PersonDataProvider implements IGatewayBase<Person, Integer> {
 
     @Inject
     PersonRepository repository;
 
     @Override
-    public PanacheRepositoryBase<Person, Long> getRepository() { return repository; }
+    public PanacheRepositoryBase<Person, Integer> getRepository() { return repository; }
 }

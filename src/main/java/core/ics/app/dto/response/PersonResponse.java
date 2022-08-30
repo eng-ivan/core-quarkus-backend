@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 @EqualsAndHashCode(callSuper = true)
 public class PersonResponse extends QueryResponseBase{
 
-    private Long id;
+    private Integer id;
 
     private String personName;
 

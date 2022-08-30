@@ -40,7 +40,7 @@ public class PersonServiceMaintenanceTest {
                              .thenReturn(PersonServiceFixture.createObjectPanache(true));
         doNothing().when(personRepository).persistAndFlush(any(Person.class));
 
-        personServiceMaintenance.save(PersonServiceFixture.createObjectSaveRequest(1L));
+        personServiceMaintenance.save(PersonServiceFixture.createObjectSaveRequest(1));
 
         verify(personRepository).persistAndFlush(any(Person.class));
     }
