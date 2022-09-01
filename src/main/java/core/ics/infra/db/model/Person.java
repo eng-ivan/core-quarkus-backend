@@ -18,19 +18,19 @@ public class Person {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    @Column(name = "person_name")
+    @Column(name = "person_name", nullable = false)
     String personName;
 
-    @Column(name = "cpf")
+    @Column(name = "cpf", nullable = false)
     String cpf;
 
-    @Column(name = "address")
+    @Column(name = "address", nullable = false)
     String address;
 
-    @Column(name = "token_key")
+    @Column(name = "token_key", nullable = false)
     String tokenKey;
 
     @CreationTimestamp
-    @Column(name = "registration_date")
+    @Column(name = "registration_date", nullable = false)
     LocalDateTime registrationDate;
 }
