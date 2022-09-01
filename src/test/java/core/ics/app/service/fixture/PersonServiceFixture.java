@@ -17,13 +17,12 @@ public class PersonServiceFixture {
 
     public static List<Person> responseList(Long id){
         if(empty) Stream.empty();
-        return Stream.of(createObject(1L),createObject(2L)).collect(Collectors.toList());
+        return Stream.of(createObject(1),createObject(2)).collect(Collectors.toList());
     }
 
-    public static PersonSaveRequest createObjectSaveRequest(Long id){
+    public static PersonSaveRequest createObjectSaveRequest(Integer id){
 
         return PersonSaveRequest.builder()
-                .id(id)
                 .personName("Person Name ".concat(id.toString()))
                 .cpf("208.634.388-49")
                 .address("address")
@@ -31,7 +30,7 @@ public class PersonServiceFixture {
                 .build();
     }
 
-    public static Person createObject(Long id){
+    public static Person createObject(Integer id){
 
         return Person.builder()
                 .id(id)
@@ -50,13 +49,13 @@ public class PersonServiceFixture {
             public Optional<Person> singleResultOptional() {
                 return validNull ?
                         Optional.empty() :
-                        Optional.of(createObject(1L));
+                        Optional.of(createObject(1));
             }
 
             @Override
             public Stream<Person> stream() {
                 if (validNull) return  Stream.empty();
-                return Stream.of(createObject(1L));
+                return Stream.of(createObject(1));
             }
         };
     }
