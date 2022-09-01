@@ -24,7 +24,7 @@ public class PersonServiceQuery {
     @Inject
     PersonMapper mapper;
 
-    public PersonResponse getById(Long id){
+    public PersonResponse getById(Integer id){
 
         log.info("[getById] - Fetch id {}", id);
         Person person = personQueryUseCase.getById(

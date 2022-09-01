@@ -32,9 +32,9 @@ public class PersonServiceQueryTest {
         empty = false;
 
         when(personQueryUseCase.getById(anyMap()))
-                               .thenReturn(Optional.of(createObject(1L)));
+                               .thenReturn(Optional.of(createObject(1)));
 
-        PersonResponse person = personServiceQuery.getById(1L);
+        PersonResponse person = personServiceQuery.getById(1);
 
         assertNotNull(person);
     }
@@ -46,7 +46,7 @@ public class PersonServiceQueryTest {
         when(personQueryUseCase.getById(anyMap()))
                                .thenReturn(Optional.empty());
         try {
-            personServiceQuery.getById(1L);
+            personServiceQuery.getById(1);
         } catch (BusinessException be){ assertEquals(be.getMessage(), be.getCode()); }
     }
 
@@ -64,7 +64,7 @@ public class PersonServiceQueryTest {
         empty = true;
 
         when(personQueryUseCase.getAll())
-                               .thenReturn(Stream.of(createObject(1L)));
+                               .thenReturn(Stream.of(createObject(1)));
         try {
             personServiceQuery.getAll();
         } catch (BusinessException be){ assertEquals(be.getMessage(), be.getCode()); }

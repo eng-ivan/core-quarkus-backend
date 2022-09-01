@@ -12,6 +12,5 @@ import lombok.experimental.SuperBuilder;
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 public class QueryResponseBase {
-
     Integer entityCode;
 }
