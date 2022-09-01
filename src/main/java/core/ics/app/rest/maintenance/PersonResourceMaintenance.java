@@ -32,6 +32,8 @@ public class PersonResourceMaintenance {
     @Transactional
     public Response save(@RequestBody @Valid PersonSaveRequest personSaveRequest){
         personServiceMaintenance.save(personSaveRequest);
-        return Response.created(URI.create("/v1/person")).entity(BaseResponse.builder().code("201").message("Person Saved").build()).build();
+        return Response.created(URI.create(""))
+                       .entity(BaseResponse.builder().code("201").message("Person Saved").build())
+                       .build();
     }
 }
