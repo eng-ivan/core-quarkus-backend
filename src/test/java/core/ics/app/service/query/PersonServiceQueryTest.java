@@ -1,7 +1,6 @@
 package core.ics.app.service.query;
 
 import core.ics.app.dto.response.PersonResponse;
-import core.ics.domain.exception.BusinessException;
 import core.ics.domain.usecase.impl.PersonQueryUseCase;
 import io.quarkus.test.junit.QuarkusTest;
 import io.quarkus.test.junit.mockito.InjectMock;
@@ -47,7 +46,7 @@ public class PersonServiceQueryTest {
                                .thenReturn(Optional.empty());
         try {
             personServiceQuery.getById(1L);
-        } catch (BusinessException be){ assertEquals(be.getMessage(), be.getCode()); }
+        } catch (RuntimeException be){ assertEquals(be.getMessage(), be.getLocalizedMessage()); }
     }
 
     @Test
@@ -56,7 +55,7 @@ public class PersonServiceQueryTest {
                                .thenReturn(Stream.empty());
         try {
             personServiceQuery.getAll();
-        } catch (BusinessException be){ assertEquals(be.getMessage(), be.getCode()); }
+        } catch (RuntimeException be){ assertEquals(be.getMessage(), be.getLocalizedMessage()); }
     }
 
     @Test
@@ -67,6 +66,6 @@ public class PersonServiceQueryTest {
                                .thenReturn(Stream.of(createObject(1L)));
         try {
             personServiceQuery.getAll();
-        } catch (BusinessException be){ assertEquals(be.getMessage(), be.getCode()); }
+        } catch (RuntimeException be){ assertEquals(be.getMessage(), be.getLocalizedMessage()); }
     }
 }
