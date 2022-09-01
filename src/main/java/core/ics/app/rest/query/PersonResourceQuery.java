@@ -29,7 +29,7 @@ public class PersonResourceQuery {
     @Path("/{id}")
     public PersonResponse getById(@PathParam("id") String id){
         log.info("[getById] - Fetch id {}", id);
-        return personServiceQuery.getById(ValidationParameter.validateParamInteger(id));
+        return personServiceQuery.getById(ValidationParameter.validateParamLong(id));
     }
 
     @GET

@@ -8,11 +8,11 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
 @ApplicationScoped
-public class PersonMaintenanceUseCase implements IMaintenanceUseCase<Person,Integer> {
+public class PersonMaintenanceUseCase implements IMaintenanceUseCase<Person,Long> {
 
     @Inject
-    IGatewayBase<Person, Integer> gateway;
+    IGatewayBase<Person, Long> gateway;
 
     @Override
-    public IGatewayBase<Person, Integer> getGateway() { return gateway; }
+    public IGatewayBase<Person, Long> getGateway() { return gateway; }
 }

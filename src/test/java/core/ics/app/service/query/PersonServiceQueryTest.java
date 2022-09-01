@@ -1,7 +1,6 @@
 package core.ics.app.service.query;
 
 import core.ics.app.dto.response.PersonResponse;
-import core.ics.domain.exception.BusinessException;
 import core.ics.domain.usecase.impl.PersonQueryUseCase;
 import io.quarkus.test.junit.QuarkusTest;
 import io.quarkus.test.junit.mockito.InjectMock;
@@ -32,9 +31,9 @@ public class PersonServiceQueryTest {
         empty = false;
 
         when(personQueryUseCase.getById(anyMap()))
-                               .thenReturn(Optional.of(createObject(1)));
+                               .thenReturn(Optional.of(createObject(1L)));
 
-        PersonResponse person = personServiceQuery.getById(1);
+        PersonResponse person = personServiceQuery.getById(1L);
 
         assertNotNull(person);
     }
@@ -46,8 +45,8 @@ public class PersonServiceQueryTest {
         when(personQueryUseCase.getById(anyMap()))
                                .thenReturn(Optional.empty());
         try {
-            personServiceQuery.getById(1);
-        } catch (BusinessException be){ assertEquals(be.getMessage(), be.getCode()); }
+            personServiceQuery.getById(1L);
+        } catch (RuntimeException be){ assertEquals(be.getMessage(), be.getLocalizedMessage()); }
     }
 
     @Test
@@ -56,7 +55,7 @@ public class PersonServiceQueryTest {
                                .thenReturn(Stream.empty());
         try {
             personServiceQuery.getAll();
-        } catch (BusinessException be){ assertEquals(be.getMessage(), be.getCode()); }
+        } catch (RuntimeException be){ assertEquals(be.getMessage(), be.getLocalizedMessage()); }
     }
 
     @Test
@@ -64,9 +63,9 @@ public class PersonServiceQueryTest {
         empty = true;
 
         when(personQueryUseCase.getAll())
-                               .thenReturn(Stream.of(createObject(1)));
+                               .thenReturn(Stream.of(createObject(1L)));
         try {
             personServiceQuery.getAll();
-        } catch (BusinessException be){ assertEquals(be.getMessage(), be.getCode()); }
+        } catch (RuntimeException be){ assertEquals(be.getMessage(), be.getLocalizedMessage()); }
     }
 }
