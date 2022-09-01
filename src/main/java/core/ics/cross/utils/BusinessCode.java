@@ -8,8 +8,8 @@ import java.util.stream.Stream;
 @Getter
 public enum BusinessCode {
 
-    GENERIC("","",ProblemType.SYSTEM_ERROR);
-    //NONE("","",RESO);
+    GENERIC("","", ProblemType.SYSTEM_ERROR),
+    NONE("","", ProblemType.SYSTEM_ERROR);
     String code;
     String message;
     ProblemType problemType;

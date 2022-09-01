@@ -6,7 +6,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
-
 import java.time.LocalDateTime;
 
 @Data
@@ -20,7 +19,6 @@ public class PersonResponse extends QueryResponseBase{
 
     private String personName;
 
-    @JsonFormat(pattern = "000.000.000-00")
     private String cpf;
 
     private String address;
