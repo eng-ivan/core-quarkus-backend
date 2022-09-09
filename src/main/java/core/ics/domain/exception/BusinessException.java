@@ -3,8 +3,6 @@ package core.ics.domain.exception;
 import core.ics.cross.utils.BusinessCode;
 import io.quarkus.runtime.annotations.RegisterForReflection;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
 @Data
 @RegisterForReflection

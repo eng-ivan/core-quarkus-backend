@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Data
@@ -13,7 +14,6 @@ import javax.validation.constraints.Size;
 @AllArgsConstructor
 public class PersonSaveRequest {
 
-    @NotBlank
     Long id;
 
     @NotBlank
@@ -25,9 +25,10 @@ public class PersonSaveRequest {
     private String cpf;
 
     @NotBlank
-    @Size(max = 50)
+    @Size(max = 8)
     private String address;
 
     @NotBlank
+    @Size(max = 20)
     private String tokenKey;
 }

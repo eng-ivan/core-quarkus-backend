@@ -2,6 +2,8 @@ package core.ics.app.service.maintenance;
 
 import core.ics.app.dto.request.PersonSaveRequest;
 import core.ics.cross.assembler.PersonMapper;
+import core.ics.cross.utils.BusinessCode;
+import core.ics.domain.exception.BusinessException;
 import core.ics.domain.usecase.impl.PersonMaintenanceUseCase;
 import core.ics.infra.db.model.Person;
 import lombok.extern.slf4j.Slf4j;
@@ -26,7 +28,6 @@ public class PersonServiceMaintenance {
         try {
             personMaintenanceUseCase.save(person);
             log.info("Person saved success");
-        }catch (Exception ex){ throw new RuntimeException(); }
+        }catch (Exception ex){ throw new BusinessException(BusinessCode.SAVE_ERROR); }
     }
-
 }

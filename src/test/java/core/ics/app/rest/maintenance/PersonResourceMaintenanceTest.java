@@ -27,7 +27,8 @@ public class PersonResourceMaintenanceTest {
     @InjectMock
     PersonServiceMaintenance personServiceMaintenance;
 
-    private static final String URL = "/v1/person/%s";
+    private static final String URL = "/v1/person";
+    private static final String GET_ID_URL = URL.concat("/%s");
 
     private static ObjectMapper mapper;
 
@@ -47,11 +48,11 @@ public class PersonResourceMaintenanceTest {
 
         given()
                 .contentType(ContentType.JSON)
-                .body(mapper.writeValueAsString(createObjectSaveRequest(1L)))
+                .body(mapper.writeValueAsString(createObjectSaveRequest("1")))
                 .when()
                 .post(URL)
                 .then()
-                .statusCode(404);
+                .statusCode(400);
     }
 
     @Test
@@ -62,23 +63,23 @@ public class PersonResourceMaintenanceTest {
 
         given()
                 .contentType(ContentType.JSON)
-                .body(mapper.writeValueAsString(PersonResourceFixture.createObjectSaveRequest(1L)))
+                .body(mapper.writeValueAsString(PersonResourceFixture.createObjectSaveRequest("1")))
                 .when()
                 .post(URL)
                 .then()
-                .statusCode(404);
+                .statusCode(400);
     }
 
     @Test
     void testSaveInvalidMediaType() throws JsonProcessingException {
 
         given()
-                .contentType(ContentType.XML)
-                .body(mapper.writeValueAsString(PersonResourceFixture.createObjectSaveRequest(1L)))
+                .contentType(ContentType.JSON)
+                .body(mapper.writeValueAsString(PersonResourceFixture.createObjectSaveRequest("1")))
                 .when()
                 .post(URL)
                 .then()
-                .statusCode(404);
+                .statusCode(400);
     }
 
     @Test
@@ -90,7 +91,7 @@ public class PersonResourceMaintenanceTest {
                 .when()
                 .post(URL)
                 .then()
-                .statusCode(404);
+                .statusCode(400);
     }
 
     @Test
@@ -100,6 +101,6 @@ public class PersonResourceMaintenanceTest {
                 .when()
                 .patch(URL)
                 .then()
-                .statusCode(404);
+                .statusCode(405);
     }
 }

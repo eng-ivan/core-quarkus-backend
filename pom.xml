@@ -3,8 +3,8 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
   <groupId>core.ics</groupId>
-  <artifactId>quarkus-backend-person</artifactId>
-  <version>0.2.0</version>
+  <artifactId>quarkus-person-backend</artifactId>
+  <version>0.4.1</version>
   <properties>
     <compiler-plugin.version>3.8.1</compiler-plugin.version>
     <lombok.version>1.18.24</lombok.version>
